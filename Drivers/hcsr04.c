@@ -22,24 +22,24 @@ void HCSR04_TimerFunc(uint8_t mode)
 	}
 }
 
-//µ¥´Î»ñÈ¡²âÁ¿¾àÀë
+//å•æ¬¡è·å–æµ‹é‡è·ç¦»
 float HCSR04_GetDistance_Single(void)
 {
 	HCSR04StartTrigStart();
-  while(!HCSR04_ECHO);
-  HCSR04_TimerFunc(1);//¿ªÆô¶¨Ê±Æ÷
-  while(HCSR04_ECHO);
-  HCSR04_TimerFunc(0);//¹Ø±Õ¶¨Ê±Æ÷
+  	while(!HCSR04_ECHO);
+  	HCSR04_TimerFunc(1);//å¼€å¯å®šæ—¶å™¨
+  	while(HCSR04_ECHO);
+  	HCSR04_TimerFunc(0);//å…³é—­å®šæ—¶å™¨
 	return (__HAL_TIM_GetCounter(&htim1))/58.0;
 }
 
-//¾ùÖµÂË²¨¼õĞ¡²âÁ¿Îó²î
+//å‡å€¼æ»¤æ³¢å‡å°æµ‹é‡è¯¯å·®
 float HCSR04_GetDistance_Repeatedly(uint8_t cnt)
 {
 	float sum = 0;
-  for(int i =0;i<cnt;i++)
-  {
+  	for(int i =0;i<cnt;i++)
+  	{
 		sum+=HCSR04_GetDistance_Single();
-  }
+  	}
 	return sum/cnt;
 }
