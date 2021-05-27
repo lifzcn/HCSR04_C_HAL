@@ -2,7 +2,7 @@
 #include "main.h"
 #include "tim.h"
 
-void HCSR04StartTrigStart(void)
+void HCSR04_StartTrig(void)
 {
 	HCSR04_TRIG_HIGH;
 	HAL_Delay_us(20);
